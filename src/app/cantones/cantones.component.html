@@ -1,0 +1,54 @@
+<div class="container">
+    <form [formGroup]="formve" class="row mt-5">
+      <div class="col-12 col-md-6 mb-3">
+        <label>canton</label>
+        <input formControlName="canton" type="text" class="form-control">
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label>imagen</label>
+        <input (change)="getImagen($event)" formControlName="imagen" type="file" class="form-control">
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <select formControlName="id_provincia" class="form-select" aria-label="Default select example">
+          <option *ngFor="let t of provincia" [value]="t.id">{{t.provincia}}</option>
+        </select>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" (click)="register()">Registrar</button>
+      </div>
+    </form>
+<br>
+<br>
+<br>
+    <table class="table table-dark" style="border-radius: 1rem;" >
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Canton</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Id_tipovehiculo</th>
+            <th scope="col">Eliminado</th>
+            <th scope="col">Acciones</th>
+     
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of canton">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.canton}}</td>
+            <td><img  class="" width="50" height="50" src="{{item.imagen}}"  alt=""></td>
+            <td>{{item.id_provincia}}</td>
+            <td>{{item.eliminado}}</td>
+            
+            <!-- <td>{{item.logo}}</td> -->
+            <td >
+              <div class="g-2">
+                 <button class="btn text-danger btn-sm" (click)="deletecanton(item.id)"> <i>eliminar</i> </button>
+              </div>
+              </td>
+    
+          </tr>
+         
+        </tbody>
+      </table>
+  </div>
